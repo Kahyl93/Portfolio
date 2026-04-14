@@ -1,881 +1,853 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio BTS SIO | Étudiant en informatique</title>
-  <style>
-    :root {
-      --bg: #0b1220;
-      --panel: #131c31;
-      --panel-2: #1a2642;
-      --text: #edf4ff;
-      --muted: #a9b9d3;
-      --primary: #4fc3ff;
-      --secondary: #7a6cff;
-      --border: rgba(255,255,255,0.08);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #08101d, #0d1730);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .container {
-      width: min(1100px, calc(100% - 32px));
-      margin: auto;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      background: rgba(11, 18, 32, 0.95);
-      border-bottom: 1px solid var(--border);
-      z-index: 10;
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 16px 0;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 80px 0 50px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .hero-text,
-    .terminal,
-    .card,
-    .timeline-card,
-    .skill-card,
-    .project-card,
-    .contact-card,
-    .stats-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-text {
-      padding: 30px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(79, 195, 255, 0.12);
-      color: var(--primary);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-weight: bold;
-      margin-bottom: 18px;
-      font-size: 0.9rem;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-
-    .gradient-text {
-      color: var(--primary);
-    }
-
-    .typing {
-      color: #7ce6b3;
-      font-weight: bold;
-      min-height: 28px;
-      margin-bottom: 16px;
-    }
-
-    .lead {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #08101d;
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: var(--panel-2);
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .stats-card {
-      padding: 14px;
-      text-align: center;
-    }
-
-    .stats-card strong {
-      display: block;
-      font-size: 1.1rem;
-      color: var(--primary);
-    }
-
-    .stats-card span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .terminal {
-      padding: 22px;
-    }
-
-    .terminal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-
-    .terminal-dots {
-      display: flex;
-      gap: 7px;
-    }
-
-    .terminal-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #5b6a85;
-    }
-
-    .terminal-title {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .terminal-body {
-      font-family: Consolas, monospace;
-      background: #0b1220;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
-    }
-
-    .line { margin-bottom: 10px; }
-    .prompt { color: #7ce6b3; }
-    .command { color: var(--primary); }
-    .output { color: var(--muted); }
-
-    section {
-      padding: 60px 0;
-    }
-
-    .section-head {
-      margin-bottom: 24px;
-    }
-
-    .section-head h2 {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 800px;
-    }
-
-    .about-grid,
-    .timeline-grid,
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .card,
-    .timeline-card,
-    .contact-card {
-      padding: 24px;
-    }
-
-    .about-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .about-item {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-    }
-
-    .about-item h3,
-    .timeline-card h3,
-    .skill-card h3,
-    .project-card h3,
-    .contact-card h3 {
-      margin-bottom: 8px;
-    }
-
-    .about-item p,
-    .card p,
-    .timeline-card p,
-    .skill-card p,
-    .project-card p,
-    .contact-card p {
-      color: var(--muted);
-    }
-
-    .skills-grid,
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .skill-card,
-    .project-card {
-      padding: 20px;
-    }
-
-    .progress {
-      height: 10px;
-      border-radius: 999px;
-      background: #0b1220;
-      overflow: hidden;
-      margin-top: 14px;
-    }
-
-    .progress span {
-      display: block;
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      width: 0;
-      transition: width 1s ease;
-    }
-
-    .filter-bar {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .filter-btn {
-      border: 1px solid var(--border);
-      background: var(--panel-2);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: rgba(79, 195, 255, 0.15);
-      color: var(--text);
-    }
-
-    .tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 14px 0;
-    }
-
-    .tag {
-      font-size: 0.82rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(122, 108, 255, 0.15);
-      color: #dcd7ff;
-      border: 1px solid rgba(122, 108, 255, 0.2);
-    }
-
-    .project-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .project-links a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .project-card.hidden {
-      display: none;
-    }
-
-    form {
-      display: grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--panel-2);
-      color: var(--text);
-    }
-
-    textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    .success-msg {
-      display: none;
-      padding: 12px;
-      border-radius: 10px;
-      background: rgba(124, 230, 179, 0.12);
-      border: 1px solid rgba(124, 230, 179, 0.2);
-      color: #7ce6b3;
-      font-weight: bold;
-    }
-
-    footer {
-      padding: 30px 0 40px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 950px) {
-      .hero-grid,
-      .about-grid,
-      .timeline-grid,
-      .contact-grid,
-      .skills-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-text,
-      .terminal,
-      .card,
-      .timeline-card,
-      .skill-card,
-      .project-card,
-      .contact-card {
-        padding: 18px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio BTS SIO | Étudiant en informatique</title>
+<style>
+:root {
+--bg: #0b1220;
+--panel: #131c31;
+--panel-2: #1a2642;
+--text: #edf4ff;
+--muted: #a9b9d3;
+--primary: #4fc3ff;
+--secondary: #7a6cff;
+--border: rgba(255,255,255,0.08);
+--shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: Arial, sans-serif;
+background: linear-gradient(180deg, #08101d, #0d1730);
+color: var(--text);
+line-height: 1.6;
+}
+
+.container {
+width: min(1100px, calc(100% - 32px));
+margin: auto;
+}
+
+.navbar {
+position: sticky;
+top: 0;
+background: rgba(11, 18, 32, 0.95);
+border-bottom: 1px solid var(--border);
+z-index: 10;
+}
+
+.nav-inner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 20px;
+padding: 16px 0;
+flex-wrap: wrap;
+}
+
+.logo {
+font-weight: 700;
+font-size: 1.1rem;
+color: var(--primary);
+}
+
+.nav-links {
+display: flex;
+gap: 18px;
+flex-wrap: wrap;
+}
+
+.nav-links a {
+color: var(--muted);
+text-decoration: none;
+font-weight: bold;
+}
+
+.nav-links a:hover {
+color: var(--text);
+}
+
+.hero {
+padding: 80px 0 50px;
+}
+
+.hero-grid {
+display: grid;
+grid-template-columns: 1.2fr 0.8fr;
+gap: 24px;
+align-items: center;
+}
+
+.hero-text,
+.terminal,
+.card,
+.timeline-card,
+.skill-card,
+.project-card,
+.contact-card,
+.stats-card {
+background: var(--panel);
+border: 1px solid var(--border);
+border-radius: 18px;
+box-shadow: var(--shadow);
+}
+
+.hero-text {
+padding: 30px;
+}
+
+.badge {
+display: inline-block;
+background: rgba(79, 195, 255, 0.12);
+color: var(--primary);
+padding: 8px 14px;
+border-radius: 999px;
+font-weight: bold;
+margin-bottom: 18px;
+font-size: 0.9rem;
+}
+
+h1 {
+font-size: clamp(2rem, 4vw, 3.5rem);
+line-height: 1.1;
+margin-bottom: 14px;
+}
+
+.gradient-text {
+color: var(--primary);
+}
+
+.typing {
+color: #7ce6b3;
+font-weight: bold;
+min-height: 28px;
+margin-bottom: 16px;
+}
+
+.lead {
+color: var(--muted);
+margin-bottom: 22px;
+}
+
+.hero-actions {
+display: flex;
+gap: 12px;
+flex-wrap: wrap;
+margin-bottom: 24px;
+}
+
+.btn {
+display: inline-block;
+padding: 12px 18px;
+border-radius: 10px;
+text-decoration: none;
+font-weight: bold;
+}
+
+.btn-primary {
+background: var(--primary);
+color: #08101d;
+}
+
+.btn-secondary {
+border: 1px solid var(--border);
+color: var(--text);
+background: var(--panel-2);
+}
+
+.hero-stats {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 12px;
+}
+
+.stats-card {
+padding: 14px;
+text-align: center;
+}
+
+.stats-card strong {
+display: block;
+font-size: 1.1rem;
+color: var(--primary);
+}
+
+.stats-card span {
+color: var(--muted);
+font-size: 0.9rem;
+}
+
+.terminal {
+padding: 22px;
+}
+
+.terminal-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 14px;
+}
+
+.terminal-dots {
+display: flex;
+gap: 7px;
+}
+
+.terminal-dots span {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: #5b6a85;
+}
+
+.terminal-title {
+font-size: 0.9rem;
+color: var(--muted);
+}
+
+.terminal-body {
+font-family: Consolas, monospace;
+background: #0b1220;
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 18px;
+}
+
+.line { margin-bottom: 10px; }
+.prompt { color: #7ce6b3; }
+.command { color: var(--primary); }
+.output { color: var(--muted); }
+
+section {
+padding: 60px 0;
+}
+
+.section-head {
+margin-bottom: 24px;
+}
+
+.section-head h2 {
+font-size: 2rem;
+margin-bottom: 8px;
+}
+
+.section-head p {
+color: var(--muted);
+max-width: 800px;
+}
+
+.about-grid,
+.timeline-grid,
+.contact-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+}
+
+.card,
+.timeline-card,
+.contact-card {
+padding: 24px;
+}
+
+.about-list {
+display: grid;
+gap: 12px;
+margin-top: 16px;
+}
+
+.about-item {
+background: var(--panel-2);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 14px;
+}
+
+.about-item h3,
+.timeline-card h3,
+.skill-card h3,
+.project-card h3,
+.contact-card h3 {
+margin-bottom: 8px;
+}
+
+.about-item p,
+.card p,
+.timeline-card p,
+.skill-card p,
+.project-card p,
+.contact-card p {
+color: var(--muted);
+}
+
+.skills-grid,
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 18px;
+}
+
+.skill-card,
+.project-card {
+padding: 20px;
+}
+
+.progress {
+height: 10px;
+border-radius: 999px;
+background: #0b1220;
+overflow: hidden;
+margin-top: 14px;
+}
+
+.progress span {
+display: block;
+height: 100%;
+border-radius: 999px;
+background: linear-gradient(90deg, var(--primary), var(--secondary));
+width: 0;
+transition: width 1s ease;
+}
+
+.filter-bar {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+
+.filter-btn {
+border: 1px solid var(--border);
+background: var(--panel-2);
+color: var(--muted);
+border-radius: 999px;
+padding: 10px 14px;
+cursor: pointer;
+font-weight: bold;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+background: rgba(79, 195, 255, 0.15);
+color: var(--text);
+}
+
+.tags {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+margin: 14px 0;
+}
+
+.tag {
+font-size: 0.82rem;
+padding: 6px 10px;
+border-radius: 999px;
+background: rgba(122, 108, 255, 0.15);
+color: #dcd7ff;
+border: 1px solid rgba(122, 108, 255, 0.2);
+}
+
+.project-links {
+display: flex;
+gap: 12px;
+margin-top: 12px;
+}
+
+.project-links a {
+color: var(--primary);
+text-decoration: none;
+font-weight: bold;
+}
+
+.project-card.hidden {
+display: none;
+}
+
+form {
+display: grid;
+gap: 12px;
+margin-top: 10px;
+}
+
+input, textarea {
+width: 100%;
+padding: 12px 14px;
+border-radius: 10px;
+border: 1px solid var(--border);
+background: var(--panel-2);
+color: var(--text);
+}
+
+textarea {
+min-height: 130px;
+resize: vertical;
+}
+
+.success-msg {
+display: none;
+padding: 12px;
+border-radius: 10px;
+background: rgba(124, 230, 179, 0.12);
+border: 1px solid rgba(124, 230, 179, 0.2);
+color: #7ce6b3;
+font-weight: bold;
+}
+
+footer {
+padding: 30px 0 40px;
+text-align: center;
+color: var(--muted);
+}
+
+.reveal {
+opacity: 0;
+transform: translateY(20px);
+transition: 0.6s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+@media (max-width: 950px) {
+.hero-grid,
+.about-grid,
+.timeline-grid,
+.contact-grid,
+.skills-grid,
+.projects-grid {
+grid-template-columns: 1fr;
+}
+
+.hero-stats {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 640px) {
+.hero-text,
+.terminal,
+.card,
+.timeline-card,
+.skill-card,
+.project-card,
+.contact-card {
+padding: 18px;
+}
+
+h1 {
+font-size: 2rem;
+}
+}
+</style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container nav-inner">
-      <div class="logo">&lt;<span>PORTFOLIO-KAHYL_SALHI</span>/&gt;</div>
-      <div class="nav-links">
-        <a href="#about">Profil</a>
-        <a href="#timeline">Cursus</a>
-        <a href="#skills">Compétences</a>
-        <a href="#projects">Projets</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+<nav class="navbar">
+<div class="container nav-inner">
+<div class="logo">&lt;<span>BTS SIO</span>/&gt;</div>
+<div class="nav-links">
+<a href="#about">Profil</a>
+<a href="#timeline">Cursus</a>
+<a href="#skills">Compétences</a>
+<a href="#projects">Projets</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
 
-  <header class="hero container">
-    <div class="hero-grid">
-      <div class="hero-text reveal">
-        <div class="badge">● Portfolio-kahyl SALHI</div>
-        <h1>Étudiant en <span class="gradient-text">BTS SIO</span>, je présente mon parcours, mes compétences et mes projets scolaires.</h1>
-        <div class="typing" id="typingText"></div>
-        <p class="lead">
-          Je suis actuellement en BTS SIO et ce portfolio me permet de mettre en valeur mon cursus, les compétences que je développe pendant ma formation et les projets réalisés en lien avec l'informatique. Il a été pensé pour refléter un univers technique moderne, clair et professionnel.
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">Voir mes projets</a>
-          <a href="#timeline" class="btn btn-secondary">Découvrir mon parcours</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stats-card">
-            <strong>6+</strong>
-            <span>Projets scolaires</span>
-          </div>
-          <div class="stats-card">
-            <strong>BTS SIO</strong>
-            <span>Formation en cours</span>
-          </div>
-          <div class="stats-card">
-            <strong>Objectif</strong>
-            <span>Stage / alternance / poursuite</span>
-          </div>
-        </div>
-      </div>
+<header class="hero container">
+<div class="hero-grid">
+<div class="hero-text reveal">
+<div class="badge">● Portfolio scolaire interactif • Univers informatique</div>
+<h1>Étudiant en <span class="gradient-text">BTS SIO</span>, je présente mon parcours, mes compétences et mes projets scolaires.</h1>
+<div class="typing" id="typingText"></div>
+<p class="lead">
+Je suis actuellement en BTS SIO et ce portfolio me permet de mettre en valeur mon cursus, les compétences que je développe pendant ma formation et les projets réalisés en lien avec l'informatique. Il a été pensé pour refléter un univers technique moderne, clair et professionnel.
+</p>
+<div class="hero-actions">
+<a href="#projects" class="btn btn-primary">Voir mes projets</a>
+<a href="#timeline" class="btn btn-secondary">Découvrir mon parcours</a>
+</div>
+<div class="hero-stats">
+<div class="stats-card">
+<strong>6+</strong>
+<span>Projets scolaires</span>
+</div>
+<div class="stats-card">
+<strong>BTS SIO</strong>
+<span>Formation en cours</span>
+</div>
+<div class="stats-card">
+<strong>Objectif</strong>
+<span>Stage / alternance / poursuite</span>
+</div>
+</div>
+</div>
 
-      <div class="terminal reveal">
-        <div class="terminal-header">
-          <div class="terminal-dots"><span></span><span></span><span></span></div>
-          <div class="terminal-title">kahyl@portfolio:~</div>
-        </div>
-        <div class="terminal-body">
-          <div class="line"><span class="prompt">kahyl@DESKTOP-SIO:~$</span> <span class="command">whoami</span></div>
-          <div class="line output">Étudiant en BTS SIO passionné par l'informatiques et le réseau.</div>
-          <div class="line"><span class="prompt">kahyl@DESKTOP-SIO:~$</span> <span class="command">cat parcours.json</span></div>
-          <div class="line output">Formation, compétences, projets scolaires, progression, objectifs professionnels.</div>
-          <div class="line"><span class="prompt">kahyl@DESKTOP-SIO:~$</span> <span class="command">ls compétences</span></div>
-          <div class="line output">HTML CSS Gestion-réseau JavaScript Linux </div>
-          <div class="line"><span class="prompt">kahyl@DESKTOP-SIO:~$</span> <span class="command">run portfolio.sh</span></div>
-          <div class="line output" id="terminalDynamic">Chargement du cursus BTS SIO et des projets scolaires...</div>
-        </div>
-      </div>
-    </div>
-  </header>
+<div class="terminal reveal">
+<div class="terminal-header">
+<div class="terminal-dots"><span></span><span></span><span></span></div>
+<div class="terminal-title">student@portfolio:~</div>
+</div>
+<div class="terminal-body">
+<div class="line"><span class="prompt">student@sio:~$</span> <span class="command">whoami</span></div>
+<div class="line output">Étudiant en BTS SIO passionné par le développement et les solutions informatiques.</div>
+<div class="line"><span class="prompt">student@sio:~$</span> <span class="command">cat parcours.json</span></div>
+<div class="line output">Formation, compétences, projets scolaires, progression, objectifs professionnels.</div>
+<div class="line"><span class="prompt">student@sio:~$</span> <span class="command">ls compétences</span></div>
+<div class="line output">HTML CSS JavaScript SQL PHP Gestion-de-projet</div>
+<div class="line"><span class="prompt">student@sio:~$</span> <span class="command">run portfolio.sh</span></div>
+<div class="line output" id="terminalDynamic">Chargement du cursus BTS SIO et des projets scolaires...</div>
+</div>
+</div>
+</div>
+</header>
 
-  <section id="about">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>Mon profil</h2>
-          <p>Je vous invite à lire mon profil qui comprend ma formation ainsi que mes motivations.</p>
-        </div>
-      </div>
-      <div class="about-grid">
-        <div class="card reveal">
-          <h3>Présentation</h3>
-          <p>
-            Je suis étudiant en BTS SIO et je développe progressivement mes compétences dans le domaine de l'informatique à travers ma formation, les travaux réalisés en cours et différents projets scolaires. Ce portfolio me permet de montrer mon évolution, ma motivation et ma capacité à produire des réalisations concrètes.
-          </p>
-          <div class="about-list">
-            <div class="about-item">
-              <h3>Formation</h3>
-              <p>BTS Services Informatiques aux Organisations - option SISR Formation centrée sur les réseaux, le support informatique et l'administration système. J'y apprends à gérer des incidents, configurer des postes et des serveurs.</p>
-            </div>
-            <div class="about-item">
-              <h3>Compétences développées</h3>
-              <p>Développement web, algorithmique, SQL, structuration des données, documentation et résolution de problèmes techniques.</p>
-            </div>
-            <div class="about-item">
-              <h3>Objectif</h3>
-              <p>Mettre en avant mon parcours pour un stage, une alternance ou une poursuite d'études dans l'informatique.</p>
-            </div>
-          </div>
-        </div>
-        <div class="card reveal">
-          <h3>Ce que j'aime dans l'informatique</h3>
-          <p>
-            J'apprécie particulièrement la logique, la création de solutions utiles et la possibilité de transformer une idée en projet concret. J'aime apprendre en pratiquant, comprendre comment fonctionnent les systèmes et améliorer progressivement mes réalisations.
-          </p>
-          <div class="about-list">
-            <div class="about-item">
-              <h3>Langages et outils</h3>
-              <p>HTML, CSS, JavaScript, outils bureautiques et environnements de développement.</p>
-            </div>
-            <div class="about-item">
-              <h3>Qualités</h3>
-              <p>Rigueur, curiosité, autonomie, sérieux et volonté de progresser dans chaque projet.</p>
-            </div>
-            <div class="about-item">
-              <h3>Projet professionnel</h3>
-              <p>Construire un parcours solide dans le numérique en continuant à développer mes compétences techniques et méthodologiques.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="about">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<h2>Mon profil</h2>
+<p>Cette section permet d'introduire ton profil, ta formation, ta motivation et ce que tu recherches dans le domaine de l'informatique.</p>
+</div>
+</div>
+<div class="about-grid">
+<div class="card reveal">
+<h3>Présentation</h3>
+<p>
+Je suis étudiant en BTS SIO et je développe progressivement mes compétences dans le domaine de l'informatique à travers ma formation, les travaux réalisés en cours et différents projets scolaires. Ce portfolio me permet de montrer mon évolution, ma motivation et ma capacité à produire des réalisations concrètes.
+</p>
+<div class="about-list">
+<div class="about-item">
+<h3>Formation</h3>
+<p>BTS Services Informatiques aux Organisations, avec apprentissage des bases du développement, des bases de données et de la gestion de projet.</p>
+</div>
+<div class="about-item">
+<h3>Compétences développées</h3>
+<p>Développement web, algorithmique, SQL, structuration des données, documentation et résolution de problèmes techniques.</p>
+</div>
+<div class="about-item">
+<h3>Objectif</h3>
+<p>Mettre en avant mon parcours pour un stage, une alternance ou une poursuite d'études dans l'informatique.</p>
+</div>
+</div>
+</div>
+<div class="card reveal">
+<h3>Ce que j'aime dans l'informatique</h3>
+<p>
+J'apprécie particulièrement la logique, la création de solutions utiles et la possibilité de transformer une idée en projet concret. J'aime apprendre en pratiquant, comprendre comment fonctionnent les systèmes et améliorer progressivement mes réalisations.
+</p>
+<div class="about-list">
+<div class="about-item">
+<h3>Langages et outils</h3>
+<p>HTML, CSS, JavaScript, PHP, SQL, MySQL, outils bureautiques et environnements de développement.</p>
+</div>
+<div class="about-item">
+<h3>Qualités</h3>
+<p>Rigueur, curiosité, autonomie, sérieux et volonté de progresser dans chaque projet.</p>
+</div>
+<div class="about-item">
+<h3>Projet professionnel</h3>
+<p>Construire un parcours solide dans le numérique en continuant à développer mes compétences techniques et méthodologiques.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="timeline">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>Mon cursus</h2>
-          <p>Un parcour pour le moins "informatique" :)</p>
-        </div>
-      </div>
-      <div class="timeline-grid">
-        <div class="timeline-card reveal">
-          <h3>Avant le BTS SIO</h3>
-          <p>
-             Avant de commencer ma formation en BTS SIO option SISR, j'ai suivis un BAC STI2D option SIN, puis une année en BUT Informatique, où j'ai pu découvrir les bases de l'informatique, du développement et des réseaux. Ces expériences m'ont permis de confirmer mon intérêt pour le domaine et de choisir une spécialisation plus orientée vers les services informatiques.
-          </p>
-        </div>
-        <div class="timeline-card reveal">
-          <h3>Entrée en BTS SIO</h3>
-          <p>
-             J'ai choisi le BTS SIO option SISR parce que je voulais une formation concrète, axée sur les compétences techniques grâce aux stages et à l'alternance, qui me permet de gagner en expérience sur le terrain tout en continuant à apprendre les fondamentaux de l'informatique et du développement.
-          </p>
-        </div>
-        <div class="timeline-card reveal">
-          <h3>Compétences en progression</h3>
-          <p>
-            Mets en avant les matières, les outils, les méthodes de travail et les projets qui t'ont permis de progresser depuis le début de la formation.
-          </p>
-        </div>
-        <div class="timeline-card reveal">
-          <h3>Perspective</h3>
-          <p>
-            Indique ici ton objectif après le BTS : insertion professionnelle, alternance, poursuite d'études ou spécialisation dans un domaine précis.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="timeline">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<h2>Mon cursus</h2>
+<p>Une partie dédiée à ton parcours scolaire pour donner du contexte à ton évolution et montrer la cohérence de ta formation.</p>
+</div>
+</div>
+<div class="timeline-grid">
+<div class="timeline-card reveal">
+<h3>Avant le BTS SIO</h3>
+<p>
+Présente ici ton parcours avant le BTS : bac obtenu, spécialités, premières découvertes de l'informatique ou centres d'intérêt qui t'ont amené vers cette formation.
+</p>
+</div>
+<div class="timeline-card reveal">
+<h3>Entrée en BTS SIO</h3>
+<p>
+Explique pourquoi tu as choisi cette filière, ce que tu y apprends et ce qu'elle t'apporte concrètement en termes de méthode, de connaissances et de pratique.
+</p>
+</div>
+<div class="timeline-card reveal">
+<h3>Compétences en progression</h3>
+<p>
+Mets en avant les matières, les outils, les méthodes de travail et les projets qui t'ont permis de progresser depuis le début de la formation.
+</p>
+</div>
+<div class="timeline-card reveal">
+<h3>Perspective</h3>
+<p>
+Indique ici ton objectif après le BTS : insertion professionnelle, alternance, poursuite d'études ou spécialisation dans un domaine précis.
+</p>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="skills">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>Compétences</h2>
-          <p>Les barres de progression donnent un rendu vivant au portfolio tout en mettant en avant les compétences acquises pendant ton BTS SIO.</p>
-        </div>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card reveal">
-          <h3>HTML / CSS</h3>
-          <p>Création d'interfaces web structurées, stylisées, responsive et lisibles.</p>
-          <div class="progress"><span data-width="90%"></span></div>
-        </div>
-        <div class="skill-card reveal">
-          <h3>JavaScript</h3>
-          <p>Ajout d'interactions dynamiques, logique client et manipulation du DOM.</p>
-          <div class="progress"><span data-width="78%"></span></div>
-        </div>
-        <div class="skill-card reveal">
-          <h3>PHP</h3>
-          <p>Développement côté serveur, traitement de formulaires et connexion aux données.</p>
-          <div class="progress"><span data-width="74%"></span></div>
-        </div>
-        <div class="skill-card reveal">
-          <h3>SQL / BDD</h3>
-          <p>Création de requêtes, structuration de données et exploitation de bases relationnelles.</p>
-          <div class="progress"><span data-width="82%"></span></div>
-        </div>
-        <div class="skill-card reveal">
-          <h3>Gestion de projet</h3>
-          <p>Analyse de besoin, organisation, documentation et suivi des réalisations.</p>
-          <div class="progress"><span data-width="76%"></span></div>
-        </div>
-        <div class="skill-card reveal">
-          <h3>Travail en équipe</h3>
-          <p>Collaboration, répartition des tâches, communication et amélioration continue.</p>
-          <div class="progress"><span data-width="80%"></span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="skills">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<h2>Compétences</h2>
+<p>Les barres de progression donnent un rendu vivant au portfolio tout en mettant en avant les compétences acquises pendant ton BTS SIO.</p>
+</div>
+</div>
+<div class="skills-grid">
+<div class="skill-card reveal">
+<h3>HTML / CSS</h3>
+<p>Création d'interfaces web structurées, stylisées, responsive et lisibles.</p>
+<div class="progress"><span data-width="90%"></span></div>
+</div>
+<div class="skill-card reveal">
+<h3>JavaScript</h3>
+<p>Ajout d'interactions dynamiques, logique client et manipulation du DOM.</p>
+<div class="progress"><span data-width="78%"></span></div>
+</div>
+<div class="skill-card reveal">
+<h3>PHP</h3>
+<p>Développement côté serveur, traitement de formulaires et connexion aux données.</p>
+<div class="progress"><span data-width="74%"></span></div>
+</div>
+<div class="skill-card reveal">
+<h3>SQL / BDD</h3>
+<p>Création de requêtes, structuration de données et exploitation de bases relationnelles.</p>
+<div class="progress"><span data-width="82%"></span></div>
+</div>
+<div class="skill-card reveal">
+<h3>Gestion de projet</h3>
+<p>Analyse de besoin, organisation, documentation et suivi des réalisations.</p>
+<div class="progress"><span data-width="76%"></span></div>
+</div>
+<div class="skill-card reveal">
+<h3>Travail en équipe</h3>
+<p>Collaboration, répartition des tâches, communication et amélioration continue.</p>
+<div class="progress"><span data-width="80%"></span></div>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="projects">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>Projets scolaires</h2>
-          <p>Les filtres permettent de classer tes projets par type pour une navigation plus claire et plus professionnelle.</p>
-        </div>
-      </div>
+<section id="projects">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<h2>Projets scolaires</h2>
+<p>Cette section présente plusieurs travaux réalisés pendant ma formation en BTS SIO option SISR, autour de Linux, du scripting Bash, du réseau et du développement web.</p>
+</div>
+</div>
 
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">Tous</button>
-        <button class="filter-btn" data-filter="web">Développement web</button>
-        <button class="filter-btn" data-filter="app">Applications</button>
-        <button class="filter-btn" data-filter="analyse">Analyse / conception</button>
-      </div>
+<div class="filter-bar reveal">
+<button class="filter-btn active" data-filter="all">Tous</button>
+<button class="filter-btn" data-filter="web">Développement web</button>
+<button class="filter-btn" data-filter="app">Linux / Scripts</button>
+<button class="filter-btn" data-filter="analyse">Réseau</button>
+</div>
 
-      <div class="projects-grid">
-        <article class="project-card reveal" data-category="web">
-          <h3>Site vitrine scolaire</h3>
-          <p>Création d'un site responsive dans le cadre d'un projet de formation, avec intégration HTML, mise en forme CSS et attention portée à l'expérience utilisateur.</p>
-          <div class="tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Responsive</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Voir</a>
-            <a href="#">Détails</a>
-          </div>
-        </article>
+<div class="projects-grid">
+<article class="project-card reveal" data-category="app">
+<h3>Prise en main et gestion du système Linux</h3>
+<p>Découverte de l’environnement Linux et utilisation des commandes de base en ligne de commande. Création et gestion de répertoires, manipulation de fichiers et navigation dans l’arborescence du système.</p>
+<div class="tags">
+<span class="tag">Linux</span>
+<span class="tag">Terminal</span>
+<span class="tag">Commandes</span>
+</div>
+<div class="project-links">
+<a href="#">TP Linux</a>
+<a href="#">Compétences</a>
+</div>
+</article>
 
-        <article class="project-card reveal" data-category="app">
-          <h3>Application de gestion</h3>
-          <p>Projet scolaire visant à développer une application permettant de saisir, afficher et organiser des informations à partir d'une logique fonctionnelle claire.</p>
-          <div class="tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">PHP</span>
-            <span class="tag">SQL</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Voir</a>
-            <a href="#">Détails</a>
-          </div>
-        </article>
+<article class="project-card reveal" data-category="app">
+<h3>Développement de scripts Bash pour automatisation</h3>
+<p>Création de scripts Bash permettant d’automatiser différentes tâches système. Utilisation de conditions, boucles et commandes Linux pour interagir avec l’utilisateur, vérifier des informations et manipuler des fichiers.</p>
+<div class="tags">
+<span class="tag">Bash</span>
+<span class="tag">Automatisation</span>
+<span class="tag">Scripting</span>
+</div>
+<div class="project-links">
+<a href="#">TP Script</a>
+<a href="#">Terminal</a>
+</div>
+</article>
 
-        <article class="project-card reveal" data-category="analyse">
-          <h3>Analyse d'un besoin</h3>
-          <p>Étude d'une demande utilisateur avec formalisation du besoin, proposition de solution et rédaction d'une documentation claire.</p>
-          <div class="tags">
-            <span class="tag">Analyse</span>
-            <span class="tag">Documentation</span>
-            <span class="tag">Méthode</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Voir</a>
-            <a href="#">Détails</a>
-          </div>
-        </article>
+<article class="project-card reveal" data-category="analyse">
+<h3>Configuration d’un réseau avec routage statique</h3>
+<p>Mise en place d’une topologie réseau avec plusieurs routeurs et machines. Configuration des adresses IP, vérification de la connectivité et mise en place de routes statiques ainsi que d’une route par défaut.</p>
+<div class="tags">
+<span class="tag">Packet Tracer</span>
+<span class="tag">Routage</span>
+<span class="tag">Réseau</span>
+</div>
+<div class="project-links">
+<a href="#">TP Réseau</a>
+<a href="#">Cisco</a>
+</div>
+</article>
 
-        <article class="project-card reveal" data-category="web">
-          <h3>Portfolio personnel</h3>
-          <p>Réalisation d'un portfolio interactif pour présenter mon cursus, mes compétences et mes projets dans un univers visuel inspiré de l'informatique.</p>
-          <div class="tags">
-            <span class="tag">Portfolio</span>
-            <span class="tag">Frontend</span>
-            <span class="tag">Animation</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Voir</a>
-            <a href="#">Détails</a>
-          </div>
-        </article>
+<article class="project-card reveal" data-category="web">
+<h3>Création d’une interface web en HTML/CSS</h3>
+<p>Création d’une interface web en utilisant HTML et CSS avec Flexbox et Grid. Organisation de plusieurs zones de page, mise en forme d’un formulaire et amélioration du rendu visuel avec des effets simples.</p>
+<div class="tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">Interface</span>
+</div>
+<div class="project-links">
+<a href="#">TP Web</a>
+<a href="#">Frontend</a>
+</div>
+</article>
+</div>
+</div>
+</section>
 
-        <article class="project-card reveal" data-category="app">
-          <h3>Projet base de données</h3>
-          <p>Conception d'une base de données avec création de tables, relations, requêtes SQL et mise en situation dans un cas pratique.</p>
-          <div class="tags">
-            <span class="tag">SQL</span>
-            <span class="tag">BDD</span>
-            <span class="tag">Modélisation</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Voir</a>
-            <a href="#">Détails</a>
-          </div>
-        </article>
+<section id="contact">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<h2>Contact</h2>
+<p>Une section simple pour qu'un recruteur, un tuteur de stage ou un établissement puisse te contacter facilement.</p>
+</div>
+</div>
+<div class="contact-grid">
+<div class="contact-card reveal">
+<h3>Mes informations</h3>
+<p>Remplace ces informations par tes vraies coordonnées et ajoute tes liens personnels.</p>
+<div class="about-list">
+<div class="about-item">
+<h3>Email</h3>
+<p>tonadresse@email.com</p>
+</div>
+<div class="about-item">
+<h3>GitHub</h3>
+<p>github.com/tonprofil</p>
+</div>
+<div class="about-item">
+<h3>LinkedIn</h3>
+<p>linkedin.com/in/tonprofil</p>
+</div>
+</div>
+</div>
 
-        <article class="project-card reveal" data-category="analyse">
-          <h3>Travail de groupe</h3>
-          <p>Projet réalisé en équipe avec répartition des rôles, organisation du travail et restitution d'une solution informatique structurée.</p>
-          <div class="tags">
-            <span class="tag">Équipe</span>
-            <span class="tag">Projet</span>
-            <span class="tag">Organisation</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Voir</a>
-            <a href="#">Détails</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+<div class="contact-card reveal">
+<h3>Envoyer un message</h3>
+<form id="contactForm">
+<input type="text" placeholder="Votre nom" required>
+<input type="email" placeholder="Votre email" required>
+<textarea placeholder="Votre message" required></textarea>
+<button type="submit" class="btn btn-primary">Envoyer</button>
+<div class="success-msg" id="successMsg">Message envoyé visuellement. Tu peux relier ce formulaire à un vrai service plus tard.</div>
+</form>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>Contact</h2>
-          <p>Une section simple pour qu'un recruteur, un tuteur de stage ou un établissement puisse te contacter facilement.</p>
-        </div>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card reveal">
-          <h3>Mes informations</h3>
-          <p>vous retrouverez ici mes coordonnées et mes liens personnels.</p>
-          <div class="about-list">
-            <div class="about-item">
-              <h3>Email</h3>
-              <p>kahylsalhi@gmail.com</p>
-            </div>
-            <div class="about-item">
-              <h3>GitHub</h3>
-              <p>github.com/tonprofil</p>
-            </div>
-            <div class="about-item">
-              <h3>LinkedIn</h3>
-              <p>https://www.linkedin.com/in/kahyl-salhi-8b0110388/</p>
-            </div>
-          </div>
-        </div>
+<footer>
+<div class="container">
+Portfolio BTS SIO • À personnaliser avec ton nom, ton option, tes vrais projets et ton parcours.
+</div>
+</footer>
 
-        <div class="contact-card reveal">
-          <h3>Envoyer un message</h3>
-          <form id="contactForm">
-            <input type="text" placeholder="Votre nom" required>
-            <input type="email" placeholder="Votre email" required>
-            <textarea placeholder="Votre message" required></textarea>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-            <div class="success-msg" id="successMsg">Message envoyé avec succès ! Merci de m'avoir contacté.</div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+const typingText = document.getElementById('typingText');
+const words = [
+'BTS SIO • Parcours scolaire',
+'Projets réalisés en formation',
+'Compétences techniques en progression',
+'Objectif : stage ou poursuite d\'études'
+];
 
-  <footer>
-    <div class="container">
-      Portfolio BTS SIO - Kahyl SALHI - 2026. Ce portfolio a été réalisé dans le cadre de ma formation pour présenter mon parcours, mes compétences et mes projets scolaires de manière professionnelle et moderne.
-    </div>
-  </footer>
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-  <script>
-    const typingText = document.getElementById('typingText');
-    const words = [
-      'BTS SIO • Parcours scolaire',
-      'Projets réalisés en formation',
-      'Compétences techniques en progression',
-      'Objectif : Alternance ou poursuite d\'études'
-    ];
+function typeEffect() {
+const current = words[wordIndex];
+typingText.textContent = current.slice(0, charIndex);
 
-    let wordIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
+if (!deleting && charIndex < current.length) {
+charIndex++;
+setTimeout(typeEffect, 70);
+} else if (deleting && charIndex > 0) {
+charIndex--;
+setTimeout(typeEffect, 35);
+} else {
+deleting = !deleting;
+if (!deleting) {
+wordIndex = (wordIndex + 1) % words.length;
+}
+setTimeout(typeEffect, deleting ? 1000 : 250);
+}
+}
+typeEffect();
 
-    function typeEffect() {
-      const current = words[wordIndex];
-      typingText.textContent = current.slice(0, charIndex);
+const revealElements = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach((entry) => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+entry.target.querySelectorAll('.progress span').forEach((bar) => {
+bar.style.width = bar.dataset.width;
+});
+}
+});
+}, { threshold: 0.15 });
 
-      if (!deleting && charIndex < current.length) {
-        charIndex++;
-        setTimeout(typeEffect, 70);
-      } else if (deleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(typeEffect, 35);
-      } else {
-        deleting = !deleting;
-        if (!deleting) {
-          wordIndex = (wordIndex + 1) % words.length;
-        }
-        setTimeout(typeEffect, deleting ? 1000 : 250);
-      }
-    }
-    typeEffect();
+revealElements.forEach((el) => observer.observe(el));
 
-    const revealElements = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          entry.target.querySelectorAll('.progress span').forEach((bar) => {
-            bar.style.width = bar.dataset.width;
-          });
-        }
-      });
-    }, { threshold: 0.15 });
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projects = document.querySelectorAll('.project-card');
 
-    revealElements.forEach((el) => observer.observe(el));
+filterButtons.forEach((button) => {
+button.addEventListener('click', () => {
+filterButtons.forEach((btn) => btn.classList.remove('active'));
+button.classList.add('active');
+const filter = button.dataset.filter;
 
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.project-card');
+projects.forEach((project) => {
+const category = project.dataset.category;
+if (filter === 'all' || category === filter) {
+project.classList.remove('hidden');
+} else {
+project.classList.add('hidden');
+}
+});
+});
+});
 
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach((btn) => btn.classList.remove('active'));
-        button.classList.add('active');
-        const filter = button.dataset.filter;
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('successMsg');
 
-        projects.forEach((project) => {
-          const category = project.dataset.category;
-          if (filter === 'all' || category === filter) {
-            project.classList.remove('hidden');
-          } else {
-            project.classList.add('hidden');
-          }
-        });
-      });
-    });
-
-    const form = document.getElementById('contactForm');
-    const successMsg = document.getElementById('successMsg');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      successMsg.style.display = 'block';
-      form.reset();
-    });
-  </script>
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+successMsg.style.display = 'block';
+form.reset();
+});
+</script>
 </body>
 </html>
