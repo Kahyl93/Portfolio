@@ -936,6 +936,10 @@ function changeSlide(direction) {
   document.getElementById("carouselImage").src = images[index].src;
   document.getElementById("carouselText").textContent = images[index].text;
 }
+function autoSlide() {
+  changeSlide(1);
+}
+setInterval(autoSlide, 3000);  
 </script>
 </body>
 </html>
