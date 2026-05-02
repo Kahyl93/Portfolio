@@ -515,4 +515,11 @@ font-size: 2rem;
   display: block;
   margin: 20px auto;
   border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: zoom-in;
+}
+
+.project-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(79, 195, 255, 0.25);
 }
