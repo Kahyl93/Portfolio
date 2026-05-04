@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: #e8e6e0;
+  color: #2c2c2c;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.window {
+  max-width: 750px;
+  margin: auto;
+  border: 1px solid #b0aca4;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.titlebar {
+  background: #d4d0c8;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #b0aca4;
+}
+
+.dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.r { background: #ff5f57; }
+.dot.y { background: #ffbd2e; }
+.dot.g { background: #28c840; }
+
+.titlebar-label {
+  font-size: 12px;
+  color: #6b6860;
+  flex: 1;
+  text-align: center;
+}
+
+.body {
+  background: #f5f2ec;
+  padding: 30px 32px 36px;
+}
+
+.prompt {
+  font-size: 13px;
+  color: #888480;
+  margin-bottom: 6px;
+}
+.prompt .user { color: #5a7a3a; }
+.prompt .path { color: #7a5a3a; }
+
+h1 {
+  font-size: 20px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+h1 span { color: #5a7a3a; }
+
+.subtitle {
+  font-size: 13px;
+  color: #6b6860;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.input-label {
+  font-size: 12px;
+  color: #5a7a3a;
+  margin-bottom: 8px;
+}
+
+input[type="password"] {
+  width: 100%;
+  background: #eceae4;
+  border: 1px solid #b0aca4;
+  border-radius: 6px;
+  padding: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: #2c2c2c;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input[type="password"]:focus { border-color: #5a7a3a; }
+input[type="password"]::placeholder { color: #aaa8a2; }
+
+#resultat {
+  display: none;
+  margin-top: 24px;
+  background: #eceae4;
+  border: 1px solid #b0aca4;
+  border-left: 3px solid #5a7a3a;
+  border-radius: 6px;
+  padding: 20px;
+  animation: fadein 0.3s ease;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.retour {
+  display: inline-block;
+  margin-top: 28px;
+  color: #5a7a3a;
+  text-decoration: none;
+  font-size: 12px;
+}
+.retour:hover { text-decoration: underline; }
