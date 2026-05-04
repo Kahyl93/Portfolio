@@ -31,10 +31,22 @@ body {
 }
 
 .dots { display: flex; gap: 6px; }
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.dot.r { background: #ff5f57; }
-.dot.y { background: #ffbd2e; }
-.dot.g { background: #28c840; }
+
+.dot {
+  width: 28px;
+  height: 20px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.dot.r { background: #e74c3c; }
+.dot.y { background: #f39c12; }
+.dot.g { background: #2ecc71; }
 
 .titlebar-label {
   font-size: 12px;
