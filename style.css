@@ -578,7 +578,9 @@ font-size: 2rem;
 
  .niveau.inter-avan {
   background: linear-gradient(90deg, #f39c12, #2ecc71);
-  color: #08101d;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
