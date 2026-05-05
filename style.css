@@ -576,12 +576,10 @@ font-size: 2rem;
   margin-bottom: 6px;
 }
 
- .niveau.inter-avan {
-  background: linear-gradient(90deg, #f39c12, #2ecc71);
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.niveau.inter-avan {
+  background: linear-gradient(90deg, rgba(243, 156, 18, 0.15), rgba(46, 204, 113, 0.15));
+  color: #f39c12;
+  border: 1px solid rgba(243, 156, 18, 0.3);
 }
 
 
