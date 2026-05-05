@@ -576,11 +576,12 @@ font-size: 2rem;
   margin-bottom: 6px;
 }
 
-.niveau.debutant {
-  background: rgba(231, 76, 60, 0.15);
-  color: #e74c3c;
-  border: 1px solid rgba(231, 76, 60, 0.3);
+ .niveau.inter-avan {
+  background: linear-gradient(90deg, #f39c12, #2ecc71);
+  color: #08101d;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 
 .niveau.intermediaire {
   background: rgba(243, 156, 18, 0.15);
